@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>descenso.vicho - Bicicletas Giant Glory y Downhill Extremo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(18, 24, 38, 0.75);
+            --primary: #ff4500;
+            --accent: #00f0ff;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Barra de Navegación Estilo Glassmorphism */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-transform: lowercase;
+            color: var(--text-main);
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Sección Hero con Video de Fondo */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(11,15,25,0.4) 0%, rgba(11,15,25,0.9) 100%);
+            z-index: -1;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #ffffff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            color: var(--text-muted);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 69, 0, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(255, 69, 0, 0.7);
+        }
+
+        /* Contenedor Principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title span {
+            color: var(--accent);
+        }
+
+        /* Grid de Contenido e Imagen Destacada Giant Glory */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .feature-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .feature-text p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .feature-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .feature-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .feature-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Tarjetas de Componentes Clave */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 30px;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+        }
+
+        .card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: #070910;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Diseño Responsivo */
+        @media (max-width: 900px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de Navegación -->
+    <nav>
+        <div class="logo">descenso<span>.vicho</span></div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#bicicletas">Giant Glory</a></li>
+            <li><a href="#tecnologia">Ingeniería</a></li>
+            <li><a href="#contacto">Comunidad</a></li>
+        </ul>
+    </nav>
+
+    <!-- Sección Hero con Video de Fondo -->
+    <section id="inicio" class="hero">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-mountain-biker-riding-on-a-dirt-track-42171-large.mp4" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>descenso<span>.vicho</span></h1>
+            <p>El portal definitivo de la velocidad extrema, la gravedad y la evolución tecnológica en el ciclismo de descenso.</p>
+            <a href="#bicicletas" class="btn">Explorar Bestias de DH</a>
+        </div>
+    </section>
+
+    <!-- Contenido Principal -->
+    <div class="container">
+        
+        <!-- Sección Giant Glory (Destacada) -->
+        <section id="bicicletas">
+            <h2 class="section-title">La Leyenda: <span>Giant Glory</span></h2>
+            <div class="feature-grid">
+                <div class="feature-text">
+                    <h3>Pura Dominación en la Montaña</h3>
+                    <p>La <strong>Giant Glory</strong> es sinónimo de historia pura en las Copas del Mundo de Downhill. Diseñada para devorar terrenos hostiles, incorpora una cinemática de suspensión Maestro ultrarresponsiva que mantiene la rueda pegada al suelo en los peores rock gardens.</p>
+                    <p>Su cuadro de carbono o aluminio de alta gama ofrece una rigidez torsional milimétrica, permitiendo líneas agresivas y una estabilidad inquebrantable a más de 60 km/h cuesta abajo.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80" alt="Giant Glory Downhill Bike Action">
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Componentes / Tecnología -->
+        <section id="tecnologia">
+            <h2 class="section-title">Ingeniería de <span>Alto Rendimiento</span></h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <h4>Suspensiones de 200mm+</h4>
+                    <p>Horquillas de doble pletina y amortiguadores de aire o muelle calibrados para absorber impactos colosales y mantener el control dinámico.</p>
+                </div>
+                <div class="card">
+                    <h4>Geometría Ajustable</h4>
+                    <p>Ángulos de dirección cerrados o lanzados mediante flip-chips que adaptan la bicicleta de acuerdo a si el circuito es rápido o sumamente técnico.</p>
+                </div>
+                <div class="card">
+                    <h4>Frenos Hidráulicos Pro</h4>
+                    <p>Sistemas de 4 pistones con discos de 220mm adelante y atrás para frenadas violentas en pendientes extremas y cortados verticales.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Pie de página -->
+    <footer id="contacto">
+        <p>&copysss; 2026 descenso.vicho — Diseñado para los verdaderos amantes de la adrenalina y el MTB.</p>
+    </footer>
+
+</body>
+</html>
