@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>descenso.vicho - Bicicletas Giant Glory y Downhill Extremo</title>
+    <title>descenso.vicho — Downhill Extremo y Pura Gravedad</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0b0f19;
-            --card-bg: rgba(18, 24, 38, 0.75);
-            --primary: #ff4500;
+            --bg-color: #080c14;
+            --card-bg: rgba(15, 20, 32, 0.8);
+            --primary: #ff3b00;
             --accent: #00f0ff;
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
@@ -29,7 +29,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Barra de Navegación Estilo Glassmorphism */
+        /* Barra de Navegación */
         nav {
             position: fixed;
             top: 0;
@@ -39,7 +39,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 5%;
-            background: rgba(11, 15, 25, 0.85);
+            background: rgba(8, 12, 20, 0.85);
             backdrop-filter: blur(12px);
             z-index: 1000;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -74,7 +74,7 @@
             color: var(--accent);
         }
 
-        /* Sección Hero con Video de Fondo */
+        /* Sección Hero con Video de Descenso */
         .hero {
             position: relative;
             height: 100vh;
@@ -101,12 +101,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(11,15,25,0.4) 0%, rgba(11,15,25,0.9) 100%);
+            background: linear-gradient(180deg, rgba(8,12,20,0.3) 0%, rgba(8,12,20,0.95) 100%);
             z-index: -1;
         }
 
         .hero-content h1 {
-            font-size: 4.5rem;
+            font-size: 4.8rem;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -132,19 +132,19 @@
             text-decoration: none;
             border-radius: 30px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 0 20px rgba(255, 69, 0, 0.4);
+            box-shadow: 0 0 25px rgba(255, 59, 0, 0.5);
         }
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 0 30px rgba(255, 69, 0, 0.7);
+            box-shadow: 0 0 35px rgba(255, 59, 0, 0.8);
         }
 
         /* Contenedor Principal */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 100px 20px;
+            padding: 80px 20px;
         }
 
         .section-title {
@@ -160,53 +160,62 @@
             color: var(--accent);
         }
 
-        /* Grid de Contenido e Imagen Destacada Giant Glory */
-        .feature-grid {
+        /* Secciones de Contenido Puras de DH */
+        .dh-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
             align-items: center;
-            margin-bottom: 80px;
+            margin-bottom: 100px;
         }
 
-        .feature-text h3 {
-            font-size: 2.2rem;
+        .dh-grid.reverse {
+            direction: rtl;
+        }
+
+        .dh-grid.reverse .dh-text {
+            direction: ltr;
+        }
+
+        .dh-text h3 {
+            font-size: 2.3rem;
             margin-bottom: 20px;
             color: var(--primary);
         }
 
-        .feature-text p {
+        .dh-text p {
             color: var(--text-muted);
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             line-height: 1.8;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
-        .feature-image {
+        .dh-image {
             position: relative;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
             border: 1px solid rgba(255,255,255,0.1);
         }
 
-        .feature-image img {
+        .dh-image img {
             width: 100%;
-            height: 100%;
+            height: 380px;
             object-fit: cover;
             display: block;
             transition: transform 0.5s ease;
         }
 
-        .feature-image:hover img {
+        .dh-image:hover img {
             transform: scale(1.05);
         }
 
-        /* Tarjetas de Componentes Clave */
-        .cards-grid {
+        /* Tarjetas de Pura Info DH */
+        .info-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            margin-top: 40px;
         }
 
         .card {
@@ -219,38 +228,39 @@
         }
 
         .card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             border-color: var(--accent);
         }
 
         .card h4 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 15px;
             color: var(--accent);
         }
 
         .card p {
             color: var(--text-muted);
-            line-height: 1.6;
+            line-height: 1.7;
+            font-size: 1.05rem;
         }
 
         /* Footer */
         footer {
             text-align: center;
             padding: 40px 20px;
-            background: #070910;
+            background: #05070d;
             border-top: 1px solid rgba(255,255,255,0.05);
             color: var(--text-muted);
             font-size: 0.95rem;
         }
 
-        /* Diseño Responsivo */
         @media (max-width: 900px) {
-            .feature-grid {
+            .dh-grid, .dh-grid.reverse {
                 grid-template-columns: 1fr;
+                direction: ltr;
             }
             .hero-content h1 {
-                font-size: 3rem;
+                font-size: 3.2rem;
             }
             .nav-links {
                 display: none;
@@ -260,18 +270,17 @@
 </head>
 <body>
 
-    <!-- Barra de Navegación -->
+    <!-- Navegación -->
     <nav>
         <div class="logo">descenso<span>.vicho</span></div>
         <ul class="nav-links">
             <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#bicicletas">Giant Glory</a></li>
-            <li><a href="#tecnologia">Ingeniería</a></li>
-            <li><a href="#contacto">Comunidad</a></li>
+            <li><a href="#maquinas">Giant Glory</a></li>
+            <li><a href="#tecnica">Pistas y Técnica</a></li>
         </ul>
     </nav>
 
-    <!-- Sección Hero con Video de Fondo -->
+    <!-- Portada con Video de Descenso -->
     <section id="inicio" class="hero">
         <video autoplay muted loop playsinline class="hero-video">
             <source src="https://assets.mixkit.co/videos/preview/mixkit-mountain-biker-riding-on-a-dirt-track-42171-large.mp4" type="video/mp4">
@@ -280,53 +289,66 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>descenso<span>.vicho</span></h1>
-            <p>El portal definitivo de la velocidad extrema, la gravedad y la evolución tecnológica en el ciclismo de descenso.</p>
-            <a href="#bicicletas" class="btn">Explorar Bestias de DH</a>
+            <p>El templo del Downhill: velocidad extrema, gravedad, saltos de tierra y bajadas sin frenos.</p>
+            <a href="#maquinas" class="btn">Conocer las Bestias DH</a>
         </div>
     </section>
 
-    <!-- Contenido Principal -->
+    <!-- Contenido 100% Descenso -->
     <div class="container">
         
-        <!-- Sección Giant Glory (Destacada) -->
-        <section id="bicicletas">
-            <h2 class="section-title">La Leyenda: <span>Giant Glory</span></h2>
-            <div class="feature-grid">
-                <div class="feature-text">
-                    <h3>Pura Dominación en la Montaña</h3>
-                    <p>La <strong>Giant Glory</strong> es sinónimo de historia pura en las Copas del Mundo de Downhill. Diseñada para devorar terrenos hostiles, incorpora una cinemática de suspensión Maestro ultrarresponsiva que mantiene la rueda pegada al suelo en los peores rock gardens.</p>
-                    <p>Su cuadro de carbono o aluminio de alta gama ofrece una rigidez torsional milimétrica, permitiendo líneas agresivas y una estabilidad inquebrantable a más de 60 km/h cuesta abajo.</p>
+        <!-- Sección 1: La Giant Glory -->
+        <section id="maquinas">
+            <h2 class="section-title">La Reyna del DH: <span>Giant Glory</span></h2>
+            <div class="dh-grid">
+                <div class="dh-text">
+                    <h3>Pura Agresividad en las Bajadas</h3>
+                    <p>La <strong>Giant Glory</strong> es una auténtica leyenda viviente en el mundo del descenso. Diseñada exclusivamente para devorar circuitos extremos de Copa del Mundo, combina un cuadro de carbono de máxima rigidez con una geometría pensada para volar sobre las piedras.</p>
+                    <p>Su sistema de suspensión trasera Maestro absorbe los impactos más brutales en los rock gardens más cerrados, manteniendo la rueda trasera pegada al terreno cuando vas al límite de velocidad.</p>
                 </div>
-                <div class="feature-image">
-                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80" alt="Giant Glory Downhill Bike Action">
+                <div class="dh-image">
+                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=900&q=80" alt="Giant Glory Downhill Bike">
                 </div>
             </div>
         </section>
 
-        <!-- Sección de Componentes / Tecnología -->
-        <section id="tecnologia">
-            <h2 class="section-title">Ingeniería de <span>Alto Rendimiento</span></h2>
-            <div class="cards-grid">
+        <!-- Sección 2: El arte del Downhill -->
+        <section id="tecnica">
+            <h2 class="section-title">ADN de <span>Descenso Puro</span></h2>
+            
+            <div class="dh-grid reverse">
+                <div class="dh-text">
+                    <h3>Gravedad, Saltos y Líneas Maestras</h3>
+                    <p>El downhill no es solo ir rápido cuesta abajo; es leer el terreno en fracciones de segundo. Cada peralte, cada corte vertical y cada salto de tierra (*dirt jump*) exige una precisión milimétrica entre el cuerpo y la bicicleta.</p>
+                    <p>Las suspensiones de doble pletina con más de 200 mm de recorrido y los potentes frenos de disco hidráulicos de 4 pistones son obligatorios para sobrevivir a las pendientes más verticales de la montaña.</p>
+                </div>
+                <div class="dh-image">
+                    <img src="https://images.unsplash.com/photo-1517649763962-0c623266cf20?auto=format&fit=crop&w=900&q=80" alt="Mountain biker jumping downhill">
+                </div>
+            </div>
+
+            <!-- Tarjetas informativas de DH -->
+            <div class="info-cards">
                 <div class="card">
-                    <h4>Suspensiones de 200mm+</h4>
-                    <p>Horquillas de doble pletina y amortiguadores de aire o muelle calibrados para absorber impactos colosales y mantener el control dinámico.</p>
+                    <h4>Protección Total</h4>
+                    <p>Casco integral (*full-face*), antiparras, collarín y peto rígido son indispensables para enfrentar los tramos más técnicos sin reservas.</p>
                 </div>
                 <div class="card">
-                    <h4>Geometría Ajustable</h4>
-                    <p>Ángulos de dirección cerrados o lanzados mediante flip-chips que adaptan la bicicleta de acuerdo a si el circuito es rápido o sumamente técnico.</p>
+                    <h4>Geometría Extrema</h4>
+                    <p>Ángulos de dirección muy lanzados hacia atrás que otorgan estabilidad absoluta a más de 60 km/h sobre terrenos sueltos de tierra y rocas.</p>
                 </div>
                 <div class="card">
-                    <h4>Frenos Hidráulicos Pro</h4>
-                    <p>Sistemas de 4 pistones con discos de 220mm adelante y atrás para frenadas violentas en pendientes extremas y cortados verticales.</p>
+                    <h4>Líneas de Tierra</h4>
+                    <p>Elegir la trazada perfecta entre raíces mojadas y curvas cerradas marca la diferencia entre coronar la bajada o una caída fuerte.</p>
                 </div>
             </div>
         </section>
 
     </div>
 
-    <!-- Pie de página -->
-    <footer id="contacto">
-        <p>&copysss; 2026 descenso.vicho — Diseñado para los verdaderos amantes de la adrenalina y el MTB.</p>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 descenso.vicho — Adrenalina pura y pasión por el Downhill.</p>
     </footer>
 
 </body>
